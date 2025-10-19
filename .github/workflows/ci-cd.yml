@@ -1,41 +1,19 @@
-name: Test CI
-
-# Quand déclencher la pipeline
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
 jobs:
-  build:
-    runs-on: self-hosted  # runner fourni par GitHub
-
+  build-and-test:
+    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3       # récupère ton code
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.13'       # version Python
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest             # installe pytest pour tester
-    - name: Run tests
-      run: |
-        pytest -s || echo "No tests yet" # teste le projet
-
+      - uses: actions/checkout@v3
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.13'
+      - run: pip install -r requirements.txt
+      - run: pytest
 
   deploy:
     runs-on: self-hosted
-    needs: build      # s'exécute seulement si "test" passe
-
+    needs: build-and-test
     steps:
-    - uses: actions/checkout@v3
-
-    - name: Simulate deployment
-      run: |
-        mkdir -p /home/jerome/python-cd/
-        cd /home/jerome/python-cd/
-        git clone git@github.com:sirLancelot22/python-cicd.git
-        echo "Deployment completed successfully!"
+      - uses: actions/checkout@v3
+      - name: Deploy to server
+        run: ./deploy.sh
