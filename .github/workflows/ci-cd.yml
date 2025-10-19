@@ -16,7 +16,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v4
       with:
-        python-version: '3.11'       # version Python
+        python-version: '3.13'       # version Python
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -35,7 +35,7 @@ jobs:
 
     - name: Simulate deployment
       run: |
-        mkdir -p /home/jerome/deploy
-        cp calc.py /home/jerome/deploy/
-        cp test_calc.py /home/jerome/deploy/
+        mkdir -p /home/jerome/python-cd/
+        cd /home/jerome/python-cd/
+        git clone git@github.com:sirLancelot22/python-cicd.git
         echo "Deployment completed successfully!"
