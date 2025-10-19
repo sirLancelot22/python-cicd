@@ -9,7 +9,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest  # runner fourni par GitHub
+    runs-on: self-hosted  # runner fourni par GitHub
 
     steps:
     - uses: actions/checkout@v3       # récupère ton code
@@ -35,7 +35,7 @@ jobs:
 
     - name: Simulate deployment
       run: |
-        mkdir -p deploy
-        cp calc.py deploy/
-        cp test_calc.py deploy/
+        mkdir -p /home/jerome/deploy
+        cp calc.py /home/jerome/deploy/
+        cp test_calc.py /home/jerome/deploy/
         echo "Deployment completed successfully!"
