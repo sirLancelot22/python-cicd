@@ -27,7 +27,7 @@ jobs:
 
 
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: build      # s'exécute seulement si "test" passe
 
     steps:
