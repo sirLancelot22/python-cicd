@@ -1,0 +1,14 @@
+[Unit]
+Description=Service Python de calculs aléatoires
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/python3 /home/jerome/python3-cicd/random_calc.py
+Restart=always
+User=jerome
+WorkingDirectory=/home/jerome
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
