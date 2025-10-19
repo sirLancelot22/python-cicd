@@ -3,7 +3,7 @@ Description=Service Python de calculs aléatoires
 After=network.target
 
 [Service]
-ExecStart=/usr/bin/python3 /home/jerome/python3-cicd/random_calc.py
+ExecStart=/usr/bin/python3 /home/jerome/python-cicd/random_calc.py
 Restart=always
 User=jerome
 WorkingDirectory=/home/jerome
