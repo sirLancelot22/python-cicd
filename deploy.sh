@@ -6,7 +6,7 @@ cd /home/jerome/python-cicd/
 git reset --hard main
 git pull origin main  # récupère la dernière version
 git reset --hard main
-cat systemd > /etc/systemd/system/random-calc.service
+cp systemd /etc/systemd/system/random-calc.service
 systemctl daemon-reload
-systemctl restart random-calc.sh
+systemctl restart random-calc.service
 echo "Déploiement terminé !"
