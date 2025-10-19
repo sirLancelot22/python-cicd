@@ -23,4 +23,4 @@ jobs:
         pip install pytest             # installe pytest pour tester
     - name: Run tests
       run: |
-        pytest || echo "No tests yet" # teste le projet
+        pytest -s || echo "No tests yet" # teste le projet
